@@ -1,0 +1,12 @@
+{
+  "name": "bankee",
+  "displayName": "bankee",
+  "expo": {
+    "name": "bankee",
+    "slug": "bankee",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
