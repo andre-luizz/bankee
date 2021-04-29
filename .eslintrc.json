@@ -23,6 +23,9 @@
     },
     "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
     "rules": {
+        "react/no-unescaped-entities": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/prop-types": "off",
         "camelcase": "off",
         "no-use-before-define": "off",
         "prettier/prettier": "error",
