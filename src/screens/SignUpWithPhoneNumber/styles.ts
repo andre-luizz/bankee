@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { Form } from '@unform/mobile';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
@@ -25,18 +24,4 @@ export const SubTitle = styled.Text`
     text-align: center;
     opacity: 0.8;
     line-height: 25px;
-`;
-
-export const FormContainer = styled(Form)`
-    background: red;
-`;
-
-export const Terms = styled.Text`
-    font-family: ${fonts.title};
-    color: ${colors.body};
-    font-size: 13px;
-    letter-spacing: 0.3px;
-    color: ${colors.body};
-    margin-top: 28px;
-    margin-bottom: 49px;
 `;

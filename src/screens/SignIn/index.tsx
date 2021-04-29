@@ -7,9 +7,9 @@ import {
 import AppLoading from 'expo-app-loading';
 import { useNavigation } from '@react-navigation/native';
 import ForgotPasswordButton from '../../components/screens/SignIn/ForgotPasswordButton';
-import SignInWithMyAccountButton from '../../components/screens/SignIn/SignInWithMyAccountButton';
-import GoToSignUpButton from '../../components/screens/SignIn/GoToSignUpButton';
+import Button from '../../components/common/Button';
 import * as S from './styles';
+import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
 
 const SignIn: React.FC = () => {
     const { navigate } = useNavigation();
@@ -39,13 +39,15 @@ const SignIn: React.FC = () => {
 
                 <ForgotPasswordButton>Forgot Password ?</ForgotPasswordButton>
 
-                <SignInWithMyAccountButton activeOpacity={0.5}>
-                    Sign in My Account
-                </SignInWithMyAccountButton>
+                <Button activeOpacity={0.5}>Sign in My Account</Button>
 
-                <GoToSignUpButton onPress={GoToSignIn} activeOpacity={0.5}>
+                <Button
+                    variant={EButtonVariantProps.TERTIARY}
+                    onPress={GoToSignIn}
+                    activeOpacity={0.5}
+                >
                     Don't have an account? - Sign Up
-                </GoToSignUpButton>
+                </Button>
             </S.Form>
         </S.Container>
     );

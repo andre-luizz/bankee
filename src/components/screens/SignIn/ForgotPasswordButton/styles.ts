@@ -5,6 +5,7 @@ import fonts from '../../../../styles/fonts';
 
 export const Button = styled(RectButton)`
     margin-top: 21px;
+    margin-bottom: 51px;
     align-self: flex-end;
 `;
 

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
     useFonts,
     DMSans_700Bold,
@@ -6,16 +6,28 @@ import {
 } from '@expo-google-fonts/dm-sans';
 import AppLoading from 'expo-app-loading';
 import { useNavigation } from '@react-navigation/native';
-import SignUpWithMyAccountButton from '../../components/screens/SignUp/SignUpWithMyAccountButton';
-import SignUpWithMyPhoneNumberButton from '../../components/screens/SignUp/SignUpWithMyPhoneNumberButton';
-import GoToSignInButton from '../../components/screens/SignUp/GoToSignInButton';
+import { Alert } from 'react-native';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
+import Button from '../../components/common/Button';
 import * as S from './styles';
+import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
+import Input from '../../components/common/Input';
 
 const SignIn: React.FC = () => {
+    const formRef = useRef<FormHandles>(null);
     const { navigate } = useNavigation();
+
+    const HandleSubmit = useCallback(data => {
+        Alert.alert('Credentials', JSON.stringify(data));
+    }, []);
 
     const GoToSignIn = useCallback(() => {
         navigate('signIn');
+    }, [navigate]);
+
+    const GoToSignUpWithPhoneNumber = useCallback(() => {
+        navigate('signUpWithPhoneNumber');
     }, [navigate]);
 
     const [fontsLoaded] = useFonts({
@@ -36,28 +48,49 @@ const SignIn: React.FC = () => {
                 details for your new account
             </S.SubTitle>
 
-            <S.Form>
-                <S.Input placeholder="Full Name" />
-                <S.Input placeholder="Email Adress" />
-                <S.Input placeholder="Password" />
+            <S.FormContainer ref={formRef} onSubmit={HandleSubmit}>
+                <Input name="name" placeholder="Full Name" />
+                <Input
+                    name="email"
+                    keyboardType="email-address"
+                    placeholder="Email Address"
+                    returnKeyType="next"
+                />
+                <Input
+                    name="password"
+                    keyboardType="email-address"
+                    placeholder="Email Address"
+                    returnKeyType="next"
+                />
 
                 <S.Terms>
                     By creating your account you have to agree with our Teams
                     and Conditions.
                 </S.Terms>
 
-                <SignUpWithMyAccountButton activeOpacity={0.5}>
+                <Button
+                    onPress={() => formRef.current?.submitForm()}
+                    activeOpacity={0.5}
+                >
                     Sign up my Account
-                </SignUpWithMyAccountButton>
+                </Button>
 
-                <SignUpWithMyPhoneNumberButton activeOpacity={0.5}>
+                <Button
+                    variant={EButtonVariantProps.SECONDARY}
+                    onPress={GoToSignUpWithPhoneNumber}
+                    activeOpacity={0.5}
+                >
                     Sign up with Phone Number
-                </SignUpWithMyPhoneNumberButton>
+                </Button>
 
-                <GoToSignInButton onPress={GoToSignIn} activeOpacity={0.5}>
+                <Button
+                    variant={EButtonVariantProps.TERTIARY}
+                    onPress={GoToSignIn}
+                    activeOpacity={0.5}
+                >
                     Already have an account? - Sign In
-                </GoToSignInButton>
-            </S.Form>
+                </Button>
+            </S.FormContainer>
         </S.Container>
     );
 };
