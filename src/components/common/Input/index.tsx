@@ -11,6 +11,7 @@ import React, {
 } from 'react';
 import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as S from './styles';
 import colors from '../../../styles/colors';
 
@@ -71,14 +72,23 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
     return (
         <S.Container isFocused={isFocused}>
-            <S.Input
+            <S.TextInput
                 ref={inputElementRef}
                 keyboardAppearance="dark"
+                placeholderTextColor={colors.body}
+                defaultValue={defaultValue}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 onChangeText={value => (inputValueRef.current.value = value)}
                 {...rest}
             />
+            <TouchableOpacity>
+                <S.Icon
+                    name={icon}
+                    size={20}
+                    color={isFocused || isFilled ? colors.primary : '#CECECE'}
+                />
+            </TouchableOpacity>
         </S.Container>
     );
 };
