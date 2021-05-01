@@ -12,9 +12,7 @@ import {
     KeyboardAvoidingView,
     Platform,
     ScrollView,
-    Text,
     TextInput,
-    View,
 } from 'react-native';
 import { FormHandles } from '@unform/core';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -27,11 +25,18 @@ import fonts from '../../styles/fonts';
 
 const SignIn: React.FC = () => {
     const [checkboxState, setCheckboxState] = React.useState(false);
+    const [buttonDisableState, setButtonDisableState] = React.useState(true);
+
     const formRef = useRef<FormHandles>(null);
     const { navigate } = useNavigation();
 
     const emailInputRef = useRef<TextInput>(null);
     const passwordInputRef = useRef<TextInput>(null);
+
+    const HandleCheckBox = useCallback(() => {
+        setCheckboxState(!checkboxState);
+        setButtonDisableState(!buttonDisableState);
+    }, [checkboxState, buttonDisableState]);
 
     const HandleSubmit = useCallback(data => {
         Alert.alert('Credentials', JSON.stringify(data));
@@ -114,7 +119,6 @@ const SignIn: React.FC = () => {
                                 marginTop: 28,
                                 marginBottom: 49,
                             }}
-                            fillColor="red"
                             text="By creating your account you have to agree with our Teams and Conditions."
                             iconStyle={{
                                 borderColor: colors.primary,
@@ -128,22 +132,24 @@ const SignIn: React.FC = () => {
                                 fontSize: 13,
                                 color: colors.body,
                             }}
-                            onPress={() => setCheckboxState(!checkboxState)}
+                            onPress={HandleCheckBox}
                         />
 
                         <Button
+                            disabled={buttonDisableState}
                             onPress={() => formRef.current?.submitForm()}
                             activeOpacity={0.5}
                         >
-                            Sign up my Account
+                            Create account
                         </Button>
 
                         <Button
+                            disabled={buttonDisableState}
                             variant={EButtonVariantProps.SECONDARY}
                             onPress={GoToSignUpWithPhoneNumber}
                             activeOpacity={0.5}
                         >
-                            Sign up with Phone Number
+                            Create with Phone Number
                         </Button>
 
                         <Button

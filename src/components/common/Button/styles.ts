@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import styled, { css } from 'styled-components/native';
 import colors from '../../../styles/colors';
 import fonts from '../../../styles/fonts';
@@ -19,6 +20,12 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
     background-color: ${colors.primary};
     border-radius: 10px;
     margin-bottom: 7px;
+
+    ${props =>
+        props.disabled &&
+        css`
+            background-color: rgba(113, 101, 227, 0.2);
+        `}
 
     ${props =>
         props.variant === 'SECONDARY' &&

@@ -29,7 +29,7 @@ interface InputRef {
 }
 
 const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
-    { name, icon, ...rest },
+    { name, icon, secureTextEntry, ...rest },
     ref,
 ) => {
     const inputElementRef = useRef<any>(null);
@@ -38,6 +38,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
+
+    const [
+        InputSecureTextEntryState,
+        setInputSecureTextEntryState,
+    ] = React.useState(secureTextEntry);
 
     const handleInputFocus = useCallback(() => {
         setIsFocused(true);
@@ -76,6 +81,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
                 ref={inputElementRef}
                 keyboardAppearance="dark"
                 placeholderTextColor={colors.body}
+                secureTextEntry={InputSecureTextEntryState}
                 defaultValue={defaultValue}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
@@ -86,6 +92,9 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
                 <S.Icon
                     name={icon}
                     size={20}
+                    onPress={() =>
+                        setInputSecureTextEntryState(!InputSecureTextEntryState)
+                    }
                     color={isFocused || isFilled ? colors.primary : '#CECECE'}
                 />
             </TouchableOpacity>
