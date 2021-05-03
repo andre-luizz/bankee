@@ -1,7 +1,6 @@
 {
     "name": "bankee",
     "displayName": "bankee",
-    "icon": "./assets/images/icon.png",
     "expo": {
         "name": "bankee",
         "slug": "bankee",

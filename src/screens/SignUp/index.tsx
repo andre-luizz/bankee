@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
     useFonts,
     DMSans_700Bold,

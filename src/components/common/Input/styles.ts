@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/native';
-import { Feather } from 'expo-vector-icons';
 import colors from '../../../styles/colors';
 import fonts from '../../../styles/fonts';
 
@@ -12,12 +11,12 @@ export const Container = styled.View<ContainerProps>`
     height: 60px;
     padding-left: 29px;
     padding-right: 19px;
-    background: #f9f9f9;
+    background: ${colors.input};
     border-radius: 10px;
     margin-top: 2.5px;
     margin-bottom: 8px;
     border-width: 1px;
-    border-color: #f9f9f9;
+    border-color: ${colors.input};
     flex-direction: row;
     align-items: center;
 
@@ -34,8 +33,4 @@ export const TextInput = styled.TextInput`
     color: ${colors.body};
     font-size: 14px;
     font-family: ${fonts.body};
-`;
-
-export const Icon = styled(Feather)`
-    margin-right: 12px;
 `;

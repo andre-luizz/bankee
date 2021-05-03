@@ -12,6 +12,7 @@ import React, {
 import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as Icon from 'expo-vector-icons';
 import * as S from './styles';
 import colors from '../../../styles/colors';
 
@@ -89,7 +90,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
                 {...rest}
             />
             <TouchableOpacity>
-                <S.Icon
+                <Icon.Feather
                     name={icon}
                     size={20}
                     onPress={() =>
