@@ -1,4 +1,6 @@
-import React from 'react';
+import { NavigationHelpersContext } from '@react-navigation/core';
+import React, { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/common/Button';
 import PhoneInput from '../../components/screens/SignUpWithPhoneNumber/PhoneInput';
 import colors from '../../styles/colors';
@@ -6,6 +8,12 @@ import fonts from '../../styles/fonts';
 import * as S from './styles';
 
 const SignUpWithPhoneNumber: React.FC = () => {
+    const { navigate } = useNavigation();
+
+    const GoToVerifyNumber = useCallback(() => {
+        navigate('verifyNumber');
+    }, []);
+
     return (
         <S.Container>
             <S.Title>Mobile Number</S.Title>
@@ -49,7 +57,7 @@ const SignUpWithPhoneNumber: React.FC = () => {
                 autoFocus
             />
 
-            <Button>Send Code</Button>
+            <Button onPress={GoToVerifyNumber}>Send Code</Button>
         </S.Container>
     );
 };

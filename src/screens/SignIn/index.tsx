@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useCallback, useRef } from 'react';
 import {
     useFonts,
     DMSans_700Bold,
@@ -6,13 +7,24 @@ import {
 } from '@expo-google-fonts/dm-sans';
 import AppLoading from 'expo-app-loading';
 import { useNavigation } from '@react-navigation/native';
+import { Alert, TextInput } from 'react-native';
+import { FormHandles } from '@unform/core';
 import ForgotPasswordButton from '../../components/screens/SignIn/ForgotPasswordButton';
 import Button from '../../components/common/Button';
 import * as S from './styles';
 import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
+import Input from '../../components/common/Input';
 
 const SignIn: React.FC = () => {
+    const formRef = useRef<FormHandles>(null);
     const { navigate } = useNavigation();
+
+    const emailInputRef = useRef<TextInput>(null);
+    const passwordInputRef = useRef<TextInput>(null);
+
+    const HandleSubmit = useCallback(data => {
+        Alert.alert('Credentials', JSON.stringify(data));
+    }, []);
 
     const GoToSignIn = useCallback(() => {
         navigate('signUp');
@@ -33,13 +45,38 @@ const SignIn: React.FC = () => {
 
             <S.SubTitle>Sign in to continue</S.SubTitle>
 
-            <S.Form>
-                <S.Input placeholder="Email" />
-                <S.Input placeholder="Password" />
+            <S.Form ref={formRef} onSubmit={HandleSubmit}>
+                <Input
+                    ref={emailInputRef}
+                    keyboardType="email-address"
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    name="email"
+                    placeholder="Email"
+                    returnKeyType="next"
+                    onSubmitEditing={() => {
+                        passwordInputRef.current?.focus();
+                    }}
+                />
+                <Input
+                    ref={passwordInputRef}
+                    name="password"
+                    placeholder="Password"
+                    secureTextEntry
+                    icon="eye"
+                    textContentType="newPassword"
+                    returnKeyType="send"
+                    onSubmitEditing={() => formRef.current?.submitForm()}
+                />
 
                 <ForgotPasswordButton>Forgot Password ?</ForgotPasswordButton>
 
-                <Button activeOpacity={0.5}>Sign in My Account</Button>
+                <Button
+                    onPress={() => formRef.current?.submitForm()}
+                    activeOpacity={0.5}
+                >
+                    Sign in
+                </Button>
 
                 <Button
                     variant={EButtonVariantProps.TERTIARY}
