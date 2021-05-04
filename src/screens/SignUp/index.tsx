@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
     useFonts,
     DMSans_700Bold,
@@ -24,8 +24,8 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 const SignIn: React.FC = () => {
-    const [checkboxState, setCheckboxState] = React.useState(false);
-    const [buttonDisableState, setButtonDisableState] = React.useState(true);
+    const [checkboxState, setCheckboxState] = useState(false);
+    const [buttonDisableState, setButtonDisableState] = useState(true);
 
     const formRef = useRef<FormHandles>(null);
     const { navigate } = useNavigation();
@@ -37,6 +37,16 @@ const SignIn: React.FC = () => {
         setCheckboxState(!checkboxState);
         setButtonDisableState(!buttonDisableState);
     }, [checkboxState, buttonDisableState]);
+
+    const handleSubmittingEditingInput = useCallback(() => {
+        if (!checkboxState) {
+            return Alert.alert(
+                'Required',
+                'You should be agree with Terms and Conditions to continue',
+            );
+        }
+        return formRef.current?.submitForm();
+    }, [checkboxState]);
 
     const HandleSubmit = useCallback(data => {
         Alert.alert('Credentials', JSON.stringify(data));
@@ -107,9 +117,7 @@ const SignIn: React.FC = () => {
                             icon="eye"
                             textContentType="newPassword"
                             returnKeyType="send"
-                            onSubmitEditing={() => {
-                                formRef.current?.submitForm();
-                            }}
+                            onSubmitEditing={handleSubmittingEditingInput}
                         />
 
                         <BouncyCheckbox
