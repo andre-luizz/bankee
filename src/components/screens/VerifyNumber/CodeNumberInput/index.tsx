@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ViewProps, TextInput } from 'react-native';
 import * as S from './styles';
 
-const CodeNumberInput: React.FC = () => {
+interface CodeNumberInputProps extends ViewProps {
+    codeNumbers: string;
+}
+
+const CodeNumberInput: React.FC<CodeNumberInputProps> = () => {
+    const [codeNumbers, setCodeNumbers] = useState('32');
+    const codeNumberIndex = codeNumbers.split('');
+
     return (
-        <S.Container>
-            <S.NumberContainer>
-                <S.CodeNumber>7</S.CodeNumber>
-            </S.NumberContainer>
-            <S.NumberContainer>
-                <S.CodeNumber>5</S.CodeNumber>
-            </S.NumberContainer>
-            <S.NumberContainer>
-                <S.CodeNumber>1</S.CodeNumber>
-            </S.NumberContainer>
-            <S.NumberContainer>
-                <S.CodeNumber>8</S.CodeNumber>
-            </S.NumberContainer>
-        </S.Container>
+        <>
+            <S.Container>
+                {codeNumberIndex.map(code => (
+                    <S.NumberContainer>
+                        <S.CodeNumber>{code}</S.CodeNumber>
+                    </S.NumberContainer>
+                ))}
+                <TextInput
+                    onChangeText={number =>
+                        setCodeNumbers(state => state.concat(number))
+                    }
+                    style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: 70,
+                        marginTop: 50,
+                        backgroundColor: 'transparent',
+                    }}
+                />
+            </S.Container>
+        </>
     );
 };
 

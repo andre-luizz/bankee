@@ -14,6 +14,8 @@ import Button from '../../components/common/Button';
 import * as S from './styles';
 import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
 import Input from '../../components/common/Input';
+import Title from '../../components/common/Title';
+import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const SignIn: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
@@ -41,9 +43,11 @@ const SignIn: React.FC = () => {
 
     return (
         <S.Container>
-            <S.Title>Welcome Back!</S.Title>
+            <Title>Welcome Back!</Title>
 
-            <S.SubTitle>Sign in to continue</S.SubTitle>
+            <Title variant={ETitleVariantProps.SECONDARY}>
+                Sign in to continue
+            </Title>
 
             <S.Form ref={formRef} onSubmit={HandleSubmit}>
                 <Input

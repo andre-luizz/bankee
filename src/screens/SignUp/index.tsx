@@ -22,6 +22,8 @@ import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
 import Input from '../../components/common/Input';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import Title from '../../components/common/Title';
+import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const SignIn: React.FC = () => {
     const [checkboxState, setCheckboxState] = useState(false);
@@ -80,12 +82,12 @@ const SignIn: React.FC = () => {
                 contentContainerStyle={{ flex: 1 }}
             >
                 <S.Container>
-                    <S.Title>Welcome!</S.Title>
+                    <Title>Welcome!</Title>
 
-                    <S.SubTitle>
+                    <Title variant={ETitleVariantProps.SECONDARY}>
                         Please provide following {'\n'}
                         details for your new account
-                    </S.SubTitle>
+                    </Title>
 
                     <S.Form ref={formRef} onSubmit={HandleSubmit}>
                         <Input

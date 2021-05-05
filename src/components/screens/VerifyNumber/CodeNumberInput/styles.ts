@@ -3,6 +3,7 @@ import colors from '../../../../styles/colors';
 import fonts from '../../../../styles/fonts';
 
 export const Container = styled.View`
+    position: relative;
     margin-top: 59px;
     height: 80px;
     width: 100%;
@@ -15,7 +16,6 @@ export const Container = styled.View`
 export const NumberContainer = styled.View`
     height: 100%;
     width: 70px;
-    background: ${colors.white};
     justify-content: center;
     align-items: center;
     border-bottom-width: 1.2px;

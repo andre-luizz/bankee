@@ -12,6 +12,8 @@ import * as S from './styles';
 import fonts from '../../styles/fonts';
 import colors from '../../styles/colors';
 import Button from '../../components/common/Button';
+import Title from '../../components/common/Title';
+import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const VerifyNumber: React.FC = () => {
     const [fontsLoaded] = useFonts({
@@ -25,12 +27,15 @@ const VerifyNumber: React.FC = () => {
 
     return (
         <S.Container>
-            <S.Title>Verify Account</S.Title>
-            <S.SubTitle>
+            <Title>Verify Account</Title>
+
+            <Title variant={ETitleVariantProps.SECONDARY}>
                 Enter 4-digit Code code we have sent to at {'\n'}
                 <S.PhoneNumber>+0 000 000 0000.</S.PhoneNumber>
-            </S.SubTitle>
+            </Title>
+
             <CodeNumberInput />
+
             <Text
                 style={{
                     marginTop: 43,
@@ -41,6 +46,7 @@ const VerifyNumber: React.FC = () => {
             >
                 Didn’t not received the code?
             </Text>
+
             <TouchableOpacity style={{ marginTop: 16, marginBottom: 100 }}>
                 <Text
                     style={{
@@ -53,7 +59,9 @@ const VerifyNumber: React.FC = () => {
                     Resend Code
                 </Text>
             </TouchableOpacity>
+
             <Button>Proceed</Button>
+
             <Text
                 style={{
                     marginTop: 21,

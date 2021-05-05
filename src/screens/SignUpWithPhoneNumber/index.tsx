@@ -1,11 +1,12 @@
-import { NavigationHelpersContext } from '@react-navigation/core';
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/common/Button';
 import PhoneInput from '../../components/screens/SignUpWithPhoneNumber/PhoneInput';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 import * as S from './styles';
+import Title from '../../components/common/Title';
+import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const SignUpWithPhoneNumber: React.FC = () => {
     const { navigate } = useNavigation();
@@ -16,11 +17,11 @@ const SignUpWithPhoneNumber: React.FC = () => {
 
     return (
         <S.Container>
-            <S.Title>Mobile Number</S.Title>
-            <S.SubTitle>
+            <Title>Mobile Number</Title>
+            <Title variant={ETitleVariantProps.SECONDARY}>
                 Please enter your valid phone number. We will {'\n'}
                 send you 4-digit code to verify account.
-            </S.SubTitle>
+            </Title>
 
             <PhoneInput
                 containerStyle={{
