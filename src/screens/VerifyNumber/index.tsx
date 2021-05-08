@@ -6,7 +6,6 @@ import {
 } from '@expo-google-fonts/dm-sans';
 import AppLoading from 'expo-app-loading';
 import { Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import CodeNumberInput from '../../components/screens/VerifyNumber/CodeNumberInput';
 import * as S from './styles';
 import fonts from '../../styles/fonts';
@@ -14,6 +13,7 @@ import colors from '../../styles/colors';
 import Button from '../../components/common/Button';
 import Title from '../../components/common/Title';
 import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
+import ResendCodeButton from '../../components/screens/VerifyNumber/ResendCodeButton';
 
 const VerifyNumber: React.FC = () => {
     const [fontsLoaded] = useFonts({
@@ -36,29 +36,11 @@ const VerifyNumber: React.FC = () => {
 
             <CodeNumberInput />
 
-            <Text
-                style={{
-                    marginTop: 43,
-                    fontFamily: fonts.body,
-                    color: colors.body,
-                    fontSize: 15,
-                }}
-            >
+            <Title variant={ETitleVariantProps.SECONDARY}>
                 Didn’t not received the code?
-            </Text>
+            </Title>
 
-            <TouchableOpacity style={{ marginTop: 16, marginBottom: 100 }}>
-                <Text
-                    style={{
-                        fontFamily: fonts.title,
-                        fontSize: 18,
-                        textDecorationLine: 'underline',
-                        color: colors.primary,
-                    }}
-                >
-                    Resend Code
-                </Text>
-            </TouchableOpacity>
+            <ResendCodeButton>Resend Code</ResendCodeButton>
 
             <Button>Proceed</Button>
 

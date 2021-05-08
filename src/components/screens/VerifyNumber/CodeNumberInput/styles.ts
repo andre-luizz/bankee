@@ -1,30 +1,26 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import colors from '../../../../styles/colors';
 import fonts from '../../../../styles/fonts';
 
-export const Container = styled.View`
-    position: relative;
-    margin-top: 59px;
-    height: 80px;
-    width: 100%;
-    background-color: ${colors.white};
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-`;
+interface CellTextProps {
+    isFocused: boolean;
+}
 
-export const NumberContainer = styled.View`
-    height: 100%;
-    width: 70px;
-    justify-content: center;
-    align-items: center;
-    border-bottom-width: 1.2px;
-    border-bottom-color: ${colors.title};
-`;
-
-export const CodeNumber = styled.Text`
-    font-family: ${fonts.title};
+export const CellText = styled.Text<CellTextProps>`
+    padding: 20px 0 10px 30px;
     font-size: 35px;
+    font-family: ${fonts.title};
     color: ${colors.title};
-    line-height: 46px;
+    width: 80px;
+    height: 80px;
+    margin: 59px 10px 22px 0;
+    border-bottom-width: 1.5px;
+    border-bottom-color: ${colors.title};
+
+    ${props =>
+        props.isFocused &&
+        css`
+            border-bottom-color: ${colors.primary};
+            color: ${colors.primary};
+        `}
 `;

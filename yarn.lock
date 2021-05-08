@@ -6432,6 +6432,11 @@ react-native-bouncy-checkbox@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-2.1.0.tgz#d98ce01f1d03e698e27a2c463bf885ddd41d6bbc"
   integrity sha512-8faw0mBhUcSL9ndqbQ5IcHjSZ7Gf4gf7e6QBdHPcwVxbRIiPZbCdzRK5msQSmL5Wh18RNWIv6KBDJqTng3aI9A==
 
+react-native-confirmation-code-field@6:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-confirmation-code-field/-/react-native-confirmation-code-field-6.7.0.tgz#81f5e646898addb3243cf89d41d884b0762ae962"
+  integrity sha512-dzw1Wh0Lz4myVUSyj7E4u/s5y5Sz5jS4B5w+oRlaeDVnUHer+HQSIzr11ckNBGr+WVCdGIYwxrYcpZ+Dr8ELfA==
+
 react-native-country-picker-modal@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-country-picker-modal/-/react-native-country-picker-modal-2.0.0.tgz#005421303349a81fedf5975e465405bb4b7312d5"

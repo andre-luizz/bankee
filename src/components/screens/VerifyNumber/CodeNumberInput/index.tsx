@@ -1,37 +1,36 @@
 import React, { useState } from 'react';
-import { ViewProps, TextInput } from 'react-native';
+import {
+    Cursor,
+    useClearByFocusCell,
+    CodeField,
+} from 'react-native-confirmation-code-field';
 import * as S from './styles';
 
-interface CodeNumberInputProps extends ViewProps {
-    codeNumbers: string;
-}
-
-const CodeNumberInput: React.FC<CodeNumberInputProps> = () => {
-    const [codeNumbers, setCodeNumbers] = useState('32');
-    const codeNumberIndex = codeNumbers.split('');
+const CodeNumberInput: React.FC = () => {
+    const [value, setValue] = useState('');
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+        value,
+        setValue,
+    });
 
     return (
-        <>
-            <S.Container>
-                {codeNumberIndex.map(code => (
-                    <S.NumberContainer>
-                        <S.CodeNumber>{code}</S.CodeNumber>
-                    </S.NumberContainer>
-                ))}
-                <TextInput
-                    onChangeText={number =>
-                        setCodeNumbers(state => state.concat(number))
-                    }
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: 70,
-                        marginTop: 50,
-                        backgroundColor: 'transparent',
-                    }}
-                />
-            </S.Container>
-        </>
+        <CodeField
+            {...props}
+            value={value}
+            onChangeText={setValue}
+            cellCount={4}
+            keyboardType="number-pad"
+            textContentType="oneTimeCode"
+            renderCell={({ index, symbol: codeNumber, isFocused }) => (
+                <S.CellText
+                    isFocused={isFocused}
+                    key={index}
+                    onLayout={getCellOnLayoutHandler(index)}
+                >
+                    {codeNumber || (isFocused ? <Cursor /> : null)}
+                </S.CellText>
+            )}
+        />
     );
 };
 

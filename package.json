@@ -25,6 +25,7 @@
         "react-dom": "16.13.1",
         "react-native": "~0.63.4",
         "react-native-bouncy-checkbox": "^2.1.0",
+        "react-native-confirmation-code-field": "6",
         "react-native-gesture-handler": "~1.10.2",
         "react-native-phone-number-input": "^2.0.1",
         "react-native-reanimated": "~2.1.0",
