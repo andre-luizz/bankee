@@ -2,15 +2,12 @@
 import styled, { css } from 'styled-components/native';
 import colors from '../../../styles/colors';
 import fonts from '../../../styles/fonts';
-import { EButtonVariantProps } from '../../../interfaces/enums/button.enum';
 
 interface ButtonProps {
-    variant: EButtonVariantProps;
+    variant: 'primary' | 'secondary' | 'tertiary';
 }
 
-interface ButtonTextProps {
-    variant: EButtonVariantProps;
-}
+type ButtonTextProps = ButtonProps;
 
 export const Button = styled.TouchableOpacity<ButtonProps>`
     width: 100%;
@@ -28,14 +25,14 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
         `}
 
     ${props =>
-        props.variant === 'SECONDARY' &&
+        props.variant === 'secondary' &&
         css`
             background-color: ${colors.white};
             border: solid 1.5px ${colors.primary};
         `};
 
     ${props =>
-        props.variant === 'TERTIARY' &&
+        props.variant === 'tertiary' &&
         css`
             background-color: transparent;
             height: auto;
@@ -50,13 +47,13 @@ export const ButtonText = styled.Text<ButtonTextProps>`
     text-align: center;
 
     ${props =>
-        props.variant === 'SECONDARY' &&
+        props.variant === 'secondary' &&
         css`
             color: ${colors.primary};
         `}
 
     ${props =>
-        props.variant === 'TERTIARY' &&
+        props.variant === 'tertiary' &&
         css`
             margin-top: 19px;
             color: ${colors.body};

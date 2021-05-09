@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components/native';
-import { ETitleVariantProps } from '../../../interfaces/enums/title.enum';
 import colors from '../../../styles/colors';
 import fonts from '../../../styles/fonts';
 
 interface TitleProps {
-    variant: ETitleVariantProps;
+    variant: 'primary' | 'secondary' | 'tertiary';
 }
 
 export const Title = styled.Text<TitleProps>`
@@ -14,7 +13,7 @@ export const Title = styled.Text<TitleProps>`
     line-height: 46px;
 
     ${props =>
-        props.variant === 'SECONDARY' &&
+        props.variant === 'secondary' &&
         css`
             font-family: ${fonts.body};
             font-size: 15px;

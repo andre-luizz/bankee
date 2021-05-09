@@ -4,6 +4,7 @@ import SignUp from '../screens/SignUp';
 import SignIn from '../screens/SignIn';
 import SignUpWithPhoneNumber from '../screens/SignUpWithPhoneNumber';
 import VerifyNumber from '../screens/VerifyNumber';
+import AccountCreated from '../screens/AccountCreated';
 
 const routes = createStackNavigator();
 
@@ -22,6 +23,7 @@ const Routes: React.FC = () => (
             component={SignUpWithPhoneNumber}
         />
         <routes.Screen name="verifyNumber" component={VerifyNumber} />
+        <routes.Screen name="accountCreated" component={AccountCreated} />
     </routes.Navigator>
 );
 

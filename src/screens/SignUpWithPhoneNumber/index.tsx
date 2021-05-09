@@ -6,7 +6,6 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 import * as S from './styles';
 import Title from '../../components/common/Title';
-import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const SignUpWithPhoneNumber: React.FC = () => {
     const { navigate } = useNavigation();
@@ -18,7 +17,7 @@ const SignUpWithPhoneNumber: React.FC = () => {
     return (
         <S.Container>
             <Title>Mobile Number</Title>
-            <Title variant={ETitleVariantProps.SECONDARY}>
+            <Title variant="secondary">
                 Please enter your valid phone number. We will {'\n'}
                 send you 4-digit code to verify account.
             </Title>

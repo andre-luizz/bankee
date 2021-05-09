@@ -1,15 +1,14 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
-import { EButtonVariantProps } from '../../../interfaces/enums/button.enum';
 import * as S from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
     children: string;
-    variant?: EButtonVariantProps;
+    variant?: 'primary' | 'secondary' | 'tertiary';
 }
 
 const Button: React.FC<ButtonProps> = ({
-    variant = EButtonVariantProps.PRIMARY,
+    variant = 'primary',
     children,
     ...rest
 }) => {

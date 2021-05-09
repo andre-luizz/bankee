@@ -84,7 +84,7 @@ const SignIn: React.FC = () => {
                 <S.Container>
                     <Title>Welcome!</Title>
 
-                    <Title variant={ETitleVariantProps.SECONDARY}>
+                    <Title variant="secondary">
                         Please provide following {'\n'}
                         details for your new account
                     </Title>
@@ -155,7 +155,7 @@ const SignIn: React.FC = () => {
 
                         <Button
                             disabled={buttonDisableState}
-                            variant={EButtonVariantProps.SECONDARY}
+                            variant="secondary"
                             onPress={GoToSignUpWithPhoneNumber}
                             activeOpacity={0.5}
                         >
@@ -163,7 +163,7 @@ const SignIn: React.FC = () => {
                         </Button>
 
                         <Button
-                            variant={EButtonVariantProps.TERTIARY}
+                            variant="tertiary"
                             onPress={GoToSignIn}
                             activeOpacity={0.5}
                         >
