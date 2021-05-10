@@ -33,20 +33,22 @@ const VerifyNumber: React.FC = () => {
         <S.Container>
             <Title>Verify Account</Title>
 
-            <Title variant="secondary">
+            <Title variant={ETitleVariantProps.SECONDARY}>
                 Enter 4-digit Code code we have sent to at {'\n'}
                 <S.PhoneNumber>+0 000 000 0000.</S.PhoneNumber>
             </Title>
 
             <CodeNumberInput />
 
-            <Title variant="secondary">Didn’t not received the code?</Title>
+            <Title variant={ETitleVariantProps.SECONDARY}>
+                Didn’t not received the code?
+            </Title>
 
             <ResendCodeButton>Resend Code</ResendCodeButton>
 
             <Button onPress={GoToAccountCreatedScreen}>Proceed</Button>
 
-            <Title variant="secondary">
+            <Title variant={ETitleVariantProps.SECONDARY}>
                 by clicking start, you agree to our our Privacy Policy our Teams
                 and Conditions
             </Title>

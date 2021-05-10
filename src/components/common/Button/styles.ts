@@ -1,10 +1,11 @@
 /* eslint-disable no-bitwise */
 import styled, { css } from 'styled-components/native';
+import { EButtonVariantProps } from '../../../interfaces/enums/button.enum';
 import colors from '../../../styles/colors';
 import fonts from '../../../styles/fonts';
 
 interface ButtonProps {
-    variant: 'primary' | 'secondary' | 'tertiary';
+    variant: EButtonVariantProps;
 }
 
 type ButtonTextProps = ButtonProps;
@@ -25,14 +26,14 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
         `}
 
     ${props =>
-        props.variant === 'secondary' &&
+        props.variant === 'SECONDARY' &&
         css`
             background-color: ${colors.white};
             border: solid 1.5px ${colors.primary};
         `};
 
     ${props =>
-        props.variant === 'tertiary' &&
+        props.variant === 'TERTIARY' &&
         css`
             background-color: transparent;
             height: auto;
@@ -47,13 +48,13 @@ export const ButtonText = styled.Text<ButtonTextProps>`
     text-align: center;
 
     ${props =>
-        props.variant === 'secondary' &&
+        props.variant === 'SECONDARY' &&
         css`
             color: ${colors.primary};
         `}
 
     ${props =>
-        props.variant === 'tertiary' &&
+        props.variant === 'TERTIARY' &&
         css`
             margin-top: 19px;
             color: ${colors.body};

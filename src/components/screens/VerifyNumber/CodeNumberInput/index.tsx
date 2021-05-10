@@ -7,7 +7,7 @@ import {
 import * as S from './styles';
 
 const CodeNumberInput: React.FC = () => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('7815');
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,

@@ -1,13 +1,14 @@
 import React from 'react';
 import { TextProps } from 'react-native';
+import { ETitleVariantProps } from '../../../interfaces/enums/title.enum';
 import * as S from './styles';
 
 interface TitleProps extends TextProps {
-    variant?: 'primary' | 'secondary' | 'tertiary';
+    variant?: ETitleVariantProps;
 }
 
 const Title: React.FC<TitleProps> = ({
-    variant = 'primary',
+    variant = ETitleVariantProps.PRIMARY,
     children,
     ...rest
 }) => {

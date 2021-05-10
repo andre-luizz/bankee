@@ -19,11 +19,11 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Button from '../../components/common/Button';
 import * as S from './styles';
 import { EButtonVariantProps } from '../../interfaces/enums/button.enum';
+import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 import Input from '../../components/common/Input';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 import Title from '../../components/common/Title';
-import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
 
 const SignIn: React.FC = () => {
     const [checkboxState, setCheckboxState] = useState(false);
@@ -84,7 +84,7 @@ const SignIn: React.FC = () => {
                 <S.Container>
                     <Title>Welcome!</Title>
 
-                    <Title variant="secondary">
+                    <Title variant={ETitleVariantProps.SECONDARY}>
                         Please provide following {'\n'}
                         details for your new account
                     </Title>
@@ -155,7 +155,7 @@ const SignIn: React.FC = () => {
 
                         <Button
                             disabled={buttonDisableState}
-                            variant="secondary"
+                            variant={EButtonVariantProps.SECONDARY}
                             onPress={GoToSignUpWithPhoneNumber}
                             activeOpacity={0.5}
                         >
@@ -163,7 +163,7 @@ const SignIn: React.FC = () => {
                         </Button>
 
                         <Button
-                            variant="tertiary"
+                            variant={EButtonVariantProps.TERTIARY}
                             onPress={GoToSignIn}
                             activeOpacity={0.5}
                         >
