@@ -5,6 +5,10 @@ import SignIn from '../screens/SignIn';
 import SignUpWithPhoneNumber from '../screens/SignUpWithPhoneNumber';
 import VerifyNumber from '../screens/VerifyNumber';
 import AccountCreated from '../screens/AccountCreated';
+import PrivacyPolicy from '../screens/PrivacyPolicy';
+import TermsAndConditions from '../screens/TermsAndConditions';
+import fonts from '../styles/fonts';
+import colors from '../styles/colors';
 
 const routes = createStackNavigator();
 
@@ -23,6 +27,34 @@ const Routes: React.FC = () => (
             component={SignUpWithPhoneNumber}
         />
         <routes.Screen name="verifyNumber" component={VerifyNumber} />
+        <routes.Screen
+            name="privacyPolicy"
+            component={PrivacyPolicy}
+            options={{
+                headerShown: true,
+                headerTintColor: colors.white,
+                headerStyle: { height: 120, backgroundColor: colors.primary },
+                headerTitle: 'Privacy Policy',
+                headerTitleStyle: {
+                    fontFamily: fonts.title,
+                    fontSize: 30,
+                },
+            }}
+        />
+        <routes.Screen
+            name="termsAndConditions"
+            component={TermsAndConditions}
+            options={{
+                headerShown: true,
+                headerTintColor: colors.white,
+                headerStyle: { height: 120, backgroundColor: colors.primary },
+                headerTitle: 'Terms and Conditions',
+                headerTitleStyle: {
+                    fontFamily: fonts.title,
+                    fontSize: 30,
+                },
+            }}
+        />
         <routes.Screen name="accountCreated" component={AccountCreated} />
     </routes.Navigator>
 );

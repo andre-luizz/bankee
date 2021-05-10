@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useCallback } from 'react';
 import {
     useFonts,
@@ -18,6 +20,14 @@ const VerifyNumber: React.FC = () => {
 
     const GoToAccountCreatedScreen = useCallback(() => {
         navigate('accountCreated');
+    }, [navigate]);
+
+    const GoToPrivacyPolicyScreen = useCallback(() => {
+        navigate('privacyPolicy');
+    }, [navigate]);
+
+    const GoToTermsAndConditionsScreen = useCallback(() => {
+        navigate('termsAndConditions');
     }, [navigate]);
 
     const [fontsLoaded] = useFonts({
@@ -48,10 +58,16 @@ const VerifyNumber: React.FC = () => {
 
             <Button onPress={GoToAccountCreatedScreen}>Proceed</Button>
 
-            <Title variant={ETitleVariantProps.SECONDARY}>
-                by clicking start, you agree to our our Privacy Policy our Teams
-                and Conditions
-            </Title>
+            <S.TermsAndPrivacyPolicyContainer>
+                by clicking start, you agree to our{' '}
+                <S.PrivacyPolicy onPress={GoToPrivacyPolicyScreen}>
+                    Privacy Policy
+                </S.PrivacyPolicy>{' '}
+                our{' '}
+                <S.TermsAndConditions onPress={GoToTermsAndConditionsScreen}>
+                    Teams and Conditions
+                </S.TermsAndConditions>
+            </S.TermsAndPrivacyPolicyContainer>
         </S.Container>
     );
 };

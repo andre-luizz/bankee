@@ -11,7 +11,6 @@ export const Title = styled.Text<TitleProps>`
     font-family: ${fonts.title};
     font-size: 35px;
     color: ${colors.title};
-    line-height: 46px;
 
     ${props =>
         props.variant === 'SECONDARY' &&

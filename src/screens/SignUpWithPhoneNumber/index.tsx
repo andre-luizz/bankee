@@ -55,7 +55,6 @@ const SignUpWithPhoneNumber: React.FC = () => {
                 placeholder="+00 000 0000"
                 defaultCode="BR"
                 layout="first"
-                autoFocus
             />
 
             <Button onPress={GoToVerifyNumber}>Send Code</Button>
