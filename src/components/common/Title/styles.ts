@@ -11,6 +11,7 @@ export const Title = styled.Text<TitleProps>`
     font-family: ${fonts.title};
     font-size: 35px;
     color: ${colors.title};
+    text-align: center;
 
     ${props =>
         props.variant === 'SECONDARY' &&

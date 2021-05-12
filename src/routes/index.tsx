@@ -7,6 +7,8 @@ import VerifyNumber from '../screens/VerifyNumber';
 import AccountCreated from '../screens/AccountCreated';
 import PrivacyPolicy from '../screens/PrivacyPolicy';
 import TermsAndConditions from '../screens/TermsAndConditions';
+import TouchIdConfirmation from '../screens/TouchIdConfirmation';
+import MoneySummary from '../screens/MoneySummary';
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
 
@@ -56,6 +58,11 @@ const Routes: React.FC = () => (
             }}
         />
         <routes.Screen name="accountCreated" component={AccountCreated} />
+        <routes.Screen
+            name="touchIdConfirmation"
+            component={TouchIdConfirmation}
+        />
+        <routes.Screen name="moneySummary" component={MoneySummary} />
     </routes.Navigator>
 );
 

@@ -12,18 +12,6 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
     font-family: ${fonts.title};
-    font-size: 35px;
-    color: ${colors.title};
-    line-height: 46px;
-    line-height: 46px;
-`;
-
-export const SubTitle = styled.Text`
-    font-family: ${fonts.body};
     font-size: 15px;
-    color: ${colors.body};
-    margin-top: 21px;
-    text-align: center;
-    opacity: 0.8;
-    line-height: 25px;
+    color: ${colors.title};
 `;

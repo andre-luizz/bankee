@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import * as Notifications from 'expo-notifications';
 import Button from '../../components/common/Button';
 import PhoneInput from '../../components/screens/SignUpWithPhoneNumber/PhoneInput';
 import colors from '../../styles/colors';
@@ -7,13 +8,33 @@ import fonts from '../../styles/fonts';
 import * as S from './styles';
 import Title from '../../components/common/Title';
 import { ETitleVariantProps } from '../../interfaces/enums/title.enum';
+import { useRandomCode } from '../../hooks/VerifyCode';
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+    }),
+});
 
 const SignUpWithPhoneNumber: React.FC = () => {
-    const { navigate } = useNavigation();
+    const navigation = useNavigation();
+    const { randomVerificationCode } = useRandomCode();
 
-    const GoToVerifyNumber = useCallback(() => {
-        navigate('verifyNumber');
-    }, []);
+    const schedulePushNotification = useCallback(async () => {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: 'Hi, Dear',
+                body: `Your confirmation code is ${randomVerificationCode()}`,
+                color: colors.primary,
+                badge: 1,
+            },
+            trigger: { seconds: 1 },
+        });
+
+        navigation.navigate('verifyNumber');
+    }, [randomVerificationCode, navigation]);
 
     return (
         <S.Container>
@@ -57,7 +78,7 @@ const SignUpWithPhoneNumber: React.FC = () => {
                 layout="first"
             />
 
-            <Button onPress={GoToVerifyNumber}>Send Code</Button>
+            <Button onPress={schedulePushNotification}>Send Code</Button>
         </S.Container>
     );
 };
